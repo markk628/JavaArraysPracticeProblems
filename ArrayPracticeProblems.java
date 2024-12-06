@@ -26,7 +26,7 @@ public class ArrayPracticeProblems {
 	      }
 	 }
 	
-	Scanner scanner;
+	private Scanner scanner;
 	
 	public ArrayPracticeProblems() { 
 		this.scanner = new Scanner(System.in);
@@ -97,11 +97,16 @@ public class ArrayPracticeProblems {
 	private void startProgram() {
 		System.out.print("Please enter the question number you'd like to test. If you'd like to test all questions, type \"all\": ");
 		String testingPreference = scanner.nextLine();
-		try {
-			int number = Integer.parseInt(testingPreference);
-			printAnswer(number);
-		} catch (NumberFormatException e) {
+		if (testingPreference.toLowerCase().equals("all")) {
 			printAllAnswers();
+		} else {
+			try {
+				int number = Integer.parseInt(testingPreference);
+				printAnswer(number);
+			} catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+				startProgram();
+			}
 		}
 		scanner.close();
 	}
