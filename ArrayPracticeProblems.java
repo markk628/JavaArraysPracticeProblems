@@ -347,18 +347,11 @@ public class ArrayPracticeProblems {
 		int numToAdd;
 		// 0에서 입력한 배열크기까지 반복
 		for (int i = 0; i < arrayLength; i++) {
-			// i가 입력한 배열크기보다 작으면 새 정수를 입력받아 numsToSum에 저장
-			if (i < arrayLength) {
-				System.out.print("Please enter a number for index " + i + ": ");
-				numToAdd = customParseInt();
-				numsToSum[i] = numToAdd;
-			}
-		}
-		
-		// 0에서 입력한 배열크기까지 반복
-		for (int i = 0; i < arrayLength; i++) {
-			// sum에 numsToSum의 i자리에 있는 정수를 더하고 대입
-			sum += numsToSum[i];
+			// 새 정수를 입력받아 numsToSum에 저장하고 입력받은 정수를 sum에 더한다 
+			System.out.print("Please enter a number for index " + i + ": ");
+			numToAdd = customParseInt();
+			numsToSum[i] = numToAdd;
+			sum += numToAdd;
 		}
 		return sum;
 	}
