@@ -666,20 +666,17 @@ public class ArrayPracticeProblems {
 		int count = 0;
 		int numberOfWordsEntered = 0;
 		int numberOfTimesEntered = 0;
-		boolean isNumber = false;
-		boolean isYesOrNo = false;
 		for (int i = 0; i < wordsToAdd.length; i++) {
 			do {
 				System.out.print("숫자를 입력해주새요: ");
 				try {
 					count = Integer.parseInt(scanner.nextLine());
-					isNumber = true;
 					numberOfWordsEntered += count;
+					break;
 				} catch (NumberFormatException e) {
 					System.out.println(e.getMessage());
 				}
-			} while (!isNumber);
-			isNumber = false;
+			} while (true);
 			wordsToAdd[i] = new String[count];
 			for (int j = 0; j < count; j++) {
 				System.out.print("문자를 입력해주새요: ");
@@ -689,13 +686,12 @@ public class ArrayPracticeProblems {
 				System.out.print("더 값을 입력하시겠습니까?(Y/N): ");
 				answer = scanner.nextLine();
 				if (answer.toLowerCase().charAt(0) == 'y' || answer.toLowerCase().charAt(0) == 'n') {
-					isYesOrNo = true;
 					numberOfTimesEntered += 1;
+					break;
 				} else {
 					System.out.println("y 아니면 n을 입력하세요");
 				}
-			} while (!isYesOrNo);
-			isYesOrNo = false;
+			} while (true);
 			if (answer.toLowerCase().charAt(0) == 'n') {
 				break;
 			}
