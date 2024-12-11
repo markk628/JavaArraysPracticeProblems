@@ -1,6 +1,8 @@
 package JavaCodingProblems;
 
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -155,7 +157,8 @@ public class ArrayPracticeProblems {
 				System.out.print("Please enter an odd number greater than 2 for problem 8: ");
 				int oddNumber = customParseInt();
 //				System.out.println("8. " + problem8(oddNumber));
-				System.out.println("8. " + Arrays.toString(problem8v2(oddNumber)));
+//				System.out.println("8. " + Arrays.toString(problem8v2(oddNumber)));
+				System.out.println("8. " + Arrays.toString(problem8v3(oddNumber)));
 			} catch (NotAnOddNumberOrNumberGreaterThanTwoException e) {
 				System.out.println(e.getMessage());
 				printAnswer(8);
@@ -431,6 +434,22 @@ public class ArrayPracticeProblems {
 			}
 		}
 		return answer;
+	}
+	
+	int[] problem8v3(int number) throws NotAnOddNumberOrNumberGreaterThanTwoException {
+		if ((number % 2 == 0) || (number < 3)) {
+			throw new NotAnOddNumberOrNumberGreaterThanTwoException("Not an odd number or number is not greater than 2");
+		}
+		Deque<Integer> deque = new LinkedList<>();
+		int middle = (number / 2) + 1;
+		
+		deque.add(middle);
+		
+		for (int i = middle - 1; i > 0; i--) {
+			deque.addFirst(i);
+			deque.addLast(i);
+		}
+		return deque.stream().mapToInt(Integer::intValue).toArray();
 	}
 	
 	
